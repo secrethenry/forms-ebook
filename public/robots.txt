@@ -1,0 +1,6 @@
+﻿# Pagina de diagnostico - destino de trafego pago e de link em DM.
+# Nao deve ser indexada: competiria com a LP de venda em
+# https://3dm.jogodecorpo.com.br pelas mesmas palavras-chave.
+
+User-agent: *
+Disallow: /

@@ -1,0 +1,455 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════════════
+   THE DOSSIER ROOM — Design tokens (2 níveis: raw → semantic)
+   Paleta thriller noir: 60% preto · 25% vermelho · 15% dourado
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── RAW / PRIMITIVE ─────────────────────────────────────────────── */
+  --raw-black: #0d0d0d;
+  --raw-black-true: #080808;
+  --raw-carbon: #2a2a2a;
+  --raw-surface-raised: #1a1a1a;
+  --raw-ember: #1a1410;
+  --raw-wine: #1c0000;
+  --raw-red-dark: #8b0000;
+  --raw-red-vivid: #cc2222;
+  --raw-red-ember: #5a0a0a;
+  --raw-gold: #c9a227;
+  --raw-gold-bright: #e0b82e;
+  --raw-gold-deep: #9a7b1c;
+  --raw-gold-dim: #6e5a16;
+  --raw-off-white: #f0ebe0;
+  --raw-white: #fafafa;
+
+  /* alpha stops tokenizados (fim dos magic-number rgba) */
+  --raw-red-a45: rgba(204, 34, 34, 0.45);
+  --raw-red-a38: rgba(204, 34, 34, 0.38);
+  --raw-red-a30: rgba(204, 34, 34, 0.3);
+  --raw-red-a20: rgba(204, 34, 34, 0.2);
+  --raw-gold-a50: rgba(201, 162, 39, 0.5);
+  --raw-gold-a35: rgba(201, 162, 39, 0.35);
+  --raw-gold-a32: rgba(201, 162, 39, 0.32);
+  --raw-fg-a75: rgba(240, 235, 224, 0.75);
+  --raw-fg-a60: rgba(240, 235, 224, 0.6);
+  --raw-fg-a45: rgba(240, 235, 224, 0.45);
+  --raw-fg-a30: rgba(240, 235, 224, 0.3);
+
+  /* ── SEMANTIC — mapeamento shadcn (componentes dependem destes) ──── */
+  --background: var(--raw-black);
+  --foreground: var(--raw-off-white);
+  --card: var(--raw-surface-raised);
+  --card-foreground: var(--raw-off-white);
+  --popover: var(--raw-carbon);
+  --popover-foreground: var(--raw-off-white);
+  --primary: var(--raw-red-vivid);
+  --primary-foreground: var(--raw-off-white);
+  --secondary: var(--raw-carbon);
+  --secondary-foreground: var(--raw-off-white);
+  --muted: var(--raw-carbon);
+  --muted-foreground: var(--raw-fg-a60);
+  --accent: var(--raw-gold);
+  --accent-foreground: var(--raw-black);
+  --destructive: var(--raw-red-dark);
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: var(--raw-gold);
+  --radius: 0.5rem;
+
+  /* ── SEMANTIC — extensões de marca (consumidas via utilities) ────── */
+  --color-bg-deep: var(--raw-black-true);
+  --surface-warm: var(--raw-ember);
+  --primary-deep: var(--raw-red-dark);
+  --accent-bright: var(--raw-gold-bright);
+  --accent-deep: var(--raw-gold-deep);
+  --muted-2: var(--raw-fg-a45);
+  --muted-3: var(--raw-fg-a30);
+  --border-gold: var(--raw-gold-a32);
+  --border-red: var(--raw-red-a38);
+
+  /* ── GRADIENTES / LUZ ────────────────────────────────────────────── */
+  --gradient-cta-red: linear-gradient(135deg, #cc2222 0%, #8b0000 100%);
+  --gradient-cta-gold: linear-gradient(135deg, #e0b82e 0%, #c9a227 45%, #9a7b1c 100%);
+  --gradient-urgency: linear-gradient(90deg, #0d0d0d 0%, #1c0000 50%, #0d0d0d 100%);
+  --gradient-goldline: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.4), transparent);
+  --gradient-redline-v: linear-gradient(180deg, transparent, rgba(204, 34, 34, 0.3), transparent);
+  --gradient-spectrum: linear-gradient(to right, rgba(204, 34, 34, 0.3), rgba(201, 162, 39, 0.5), rgba(204, 34, 34, 0.3));
+  --gradient-hero-scrim: linear-gradient(105deg, rgba(13, 13, 13, 0.94) 0%, rgba(13, 13, 13, 0.72) 52%, rgba(13, 13, 13, 0.24) 100%);
+  --glow-red: radial-gradient(circle, rgba(139, 0, 0, 0.28) 0%, transparent 70%);
+  --glow-gold: radial-gradient(ellipse at 50% 50%, rgba(201, 162, 39, 0.16) 0%, transparent 62%);
+  --ember-bg: radial-gradient(ellipse at 50% 40%, rgba(90, 10, 10, 0.35), transparent 60%);
+
+  /* ── SOMBRAS / GLOWS ─────────────────────────────────────────────── */
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-cinematic: 0 0 60px rgba(0, 0, 0, 0.6), 0 0 120px rgba(139, 0, 0, 0.08);
+  --glow-red-rest: 0 8px 32px rgba(204, 34, 34, 0.22);
+  --glow-red-hover: 0 12px 36px rgba(204, 34, 34, 0.55);
+  --glow-gold-rest: 0 8px 32px rgba(201, 162, 39, 0.4);
+  --glow-gold-hover: 0 12px 40px rgba(201, 162, 39, 0.6);
+  --glow-gold-dot: 0 0 10px rgba(201, 162, 39, 0.6);
+  --focus-ring: 0 0 0 3px rgba(201, 162, 39, 0.55);
+
+  /* ── TIPOGRAFIA (escala fluida) ──────────────────────────────────── */
+  --fs-hero: clamp(44px, 5.05vw, 72px);
+  --fs-mega: clamp(44px, 6.4vw, 78px);
+  --fs-display-xl: clamp(40px, 5.45vw, 66px);
+  --fs-display-lg: clamp(32px, 4.15vw, 50px);
+  --fs-display-md: clamp(31px, 3.6vw, 48px);
+  --fs-display-sm: clamp(26px, 3.1vw, 40px);
+  --fs-price: clamp(54px, 8vw, 92px);
+  --fs-quote: clamp(22px, 3vw, 34px);
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-sm: 14px;
+  --fs-xs: 13px;
+  --fs-mono: 12px;
+  --lh-display: 0.98;
+  --lh-tight: 1.05;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.72;
+  --ls-mega: 1px;
+  --ls-kicker: 3px;
+  --ls-badge: 2.5px;
+  --ls-cta: 1.5px;
+  --ls-timer: 3px;
+
+  /* ── SPACING / LAYOUT ────────────────────────────────────────────── */
+  --section-py: 64px;
+  --section-py-lg: 88px;
+  --container-max: 1280px;
+  --content-max: 780px;
+  --content-max-wide: 900px;
+
+  /* ── MOTION ──────────────────────────────────────────────────────── */
+  --dur-fast: 0.2s;
+  --dur-base: 0.6s;
+  --dur-slow: 0.85s;
+  --dur-reveal: 0.8s;
+  --dur-pulse: 2.8s;
+  --dur-shimmer: 3s;
+  --dur-radar-sweep: 20s;
+  --dur-scan: 0.9s;
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1); /* ASSINATURA */
+
+  /* ── Z-INDEX ─────────────────────────────────────────────────────── */
+  --z-bg-canvas: 0;
+  --z-scrim: 1;
+  --z-content: 2;
+  --z-vsl-overlay: 5;
+  --z-vsl-bar: 10;
+  --z-rail: 40;
+  --z-sticky-cta: 50;
+  --z-urgency: 60;
+  --z-exit: 70;
+}
+
+@media (min-width: 1024px) and (max-height: 700px) {
+  :root {
+    --fs-hero: clamp(42px, 4.45vw, 58px);
+  }
+
+  .hero-portrait-frame {
+    max-width: 320px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   @theme inline — expõe tokens como utilities Tailwind v4
+   ═══════════════════════════════════════════════════════════════════ */
+@theme inline {
+  /* fontes */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-display: var(--font-bebas), sans-serif;
+  --font-heading: var(--font-bebas), sans-serif;
+
+  /* cores shadcn (mantidas) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* cores de marca (extensões) */
+  --color-bg-deep: var(--color-bg-deep);
+  --color-surface: var(--secondary);
+  --color-surface-raised: var(--card);
+  --color-surface-warm: var(--surface-warm);
+  --color-primary-deep: var(--primary-deep);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-deep: var(--accent-deep);
+  --color-muted-2: var(--muted-2);
+  --color-muted-3: var(--muted-3);
+  --color-border-gold: var(--border-gold);
+  --color-border-red: var(--border-red);
+
+  /* tipografia como utilities text-* */
+  --text-hero: var(--fs-hero);
+  --text-mega: var(--fs-mega);
+  --text-display-xl: var(--fs-display-xl);
+  --text-display-lg: var(--fs-display-lg);
+  --text-display-md: var(--fs-display-md);
+  --text-display-sm: var(--fs-display-sm);
+  --text-price: var(--fs-price);
+  --text-quote: var(--fs-quote);
+  --text-lead: var(--fs-lead);
+  --text-body: var(--fs-body);
+  --text-mono: var(--fs-mono);
+
+  /* radius extras (mantém os shadcn) */
+  --radius-2xl: 14px;
+  --radius-3xl: 16px;
+  --radius-pill: 999px;
+
+  /* sombras/glows como utilities shadow-* */
+  --shadow-card: var(--shadow-card);
+  --shadow-cinematic: var(--shadow-cinematic);
+  --shadow-glow-red: var(--glow-red-rest);
+  --shadow-glow-red-hover: var(--glow-red-hover);
+  --shadow-glow-gold: var(--glow-gold-rest);
+  --shadow-glow-gold-hover: var(--glow-gold-hover);
+
+  /* easing + animações */
+  --ease-cinematic: var(--ease-cinematic);
+  --animate-pulse-red: pulsarVermelho var(--dur-pulse) ease-in-out infinite;
+  --animate-shimmer: shimmerBtn var(--dur-shimmer) linear infinite;
+  --animate-radar-sweep: radarSweep var(--dur-radar-sweep) linear infinite;
+
+  /* container */
+  --spacing-section: var(--section-py);
+  --spacing-section-lg: var(--section-py-lg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulsarVermelho {
+  0%, 100% { box-shadow: 0 8px 32px rgba(204, 34, 34, 0.22); }
+  50% { box-shadow: 0 0 0 8px rgba(204, 34, 34, 0.07), 0 8px 40px rgba(204, 34, 34, 0.48); }
+}
+@keyframes shimmerBtn {
+  0% { transform: translateX(-120%); }
+  60%, 100% { transform: translateX(220%); }
+}
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes blipPulse {
+  0% { opacity: 0.9; transform: scale(1); }
+  70% { opacity: 0.15; transform: scale(2.6); }
+  100% { opacity: 0; transform: scale(3); }
+}
+@keyframes fakeVSLProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes forensicGridDrift {
+  from { background-position: 0 0; }
+  to { background-position: 42px 42px; }
+}
+
+@keyframes evidenceBlink {
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.72; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════════════════════════════ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: var(--fs-body);
+    line-height: var(--lh-normal);
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--raw-red-a30);
+    color: var(--raw-white);
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Focus visível (dourado) para navegação por teclado */
+:where(a, button, [role="button"], summary, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+.immersive-draw,
+[data-diagnostic-line] {
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.section-backdrop {
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  mask-image:
+    radial-gradient(ellipse at 82% 48%, black 0%, black 34%, transparent 72%),
+    linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.section-backdrop::before,
+.section-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.section-backdrop::before {
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(201, 162, 39, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+  background-size: 54px 54px;
+  animation: forensicGridDrift 38s linear infinite;
+}
+
+.section-backdrop::after {
+  opacity: 0.16;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(201, 162, 39, 0.28) 50%, transparent 100%);
+  width: 1px;
+  left: 72%;
+  animation: evidenceBlink 4.8s ease-in-out infinite;
+}
+
+.hero-scan-line {
+  animation: evidenceBlink 3.6s ease-in-out infinite;
+}
+
+.hero-scan-line--late {
+  animation-delay: 1.4s;
+}
+
+[data-diagnostic-node] {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dimension-card,
+.curriculum-card {
+  transform: translateZ(0);
+  transition:
+    transform var(--dur-fast) var(--ease-cinematic),
+    border-color var(--dur-fast) var(--ease-cinematic),
+    background-color var(--dur-fast) var(--ease-cinematic),
+    box-shadow var(--dur-fast) var(--ease-cinematic);
+}
+
+.dimension-card::before,
+.curriculum-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(201, 162, 39, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 162, 39, 0.12) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(135deg, transparent 0%, black 45%, transparent 100%);
+}
+
+.dimension-card::after,
+.curriculum-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 18px 18px;
+  height: 1px;
+  pointer-events: none;
+  background: var(--gradient-goldline);
+  opacity: 0.35;
+}
+
+@media (hover: hover) {
+  .dimension-card:hover,
+  .curriculum-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+    background-color: rgba(26, 26, 26, 0.92);
+    box-shadow: var(--shadow-cinematic);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   REDUCED-MOTION — um bloco desarma TODO movimento tokenizado
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+    --dur-reveal: 0.01ms;
+    --dur-pulse: 0.01ms;
+    --dur-shimmer: 0.01ms;
+    --dur-radar-sweep: 0.01ms;
+    --dur-scan: 0.01ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-r {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .immersive-draw,
+  [data-diagnostic-line] {
+    opacity: 0.75 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .section-backdrop::before,
+  .section-backdrop::after,
+  .hero-scan-line {
+    animation: none !important;
+  }
+}
