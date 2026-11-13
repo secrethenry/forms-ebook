@@ -7,7 +7,7 @@ import { BLUR } from "@/lib/blur";
 import { cn } from "@/lib/utils";
 
 /**
- * Página de captura do Guia (PDF gratuito).
+ * Página de captura da aula gratuita (= LP da 3DM), com o e-book de bônus.
  *
  * Enxuta de propósito: copy curta + form de 3 campos (uma pergunta por tela).
  * No fim, a tela de liberação mostra dois botões: a aula gratuita (LP da 3DM)
@@ -42,13 +42,16 @@ export default function Home() {
               <Kicker>{HERO.kicker}</Kicker>
             </div>
 
-            <h1 className="mx-auto max-w-[15ch] font-display text-display-lg uppercase leading-[var(--lh-display)] text-foreground">
-              Por que qualquer mentira{" "}
-              <span className="text-accent">funciona com você?</span>
+            <h1 className="mx-auto max-w-[18ch] font-display text-display-lg uppercase leading-[var(--lh-display)] text-foreground">
+              {HERO.title.lead} <span className="text-accent">{HERO.title.accent}</span>
             </h1>
 
             <p className="mx-auto mt-7 max-w-[520px] text-base leading-[1.75] text-muted-foreground sm:text-lg">
               {HERO.sub}
+            </p>
+
+            <p className="mx-auto mt-4 max-w-[520px] text-sm font-medium leading-relaxed text-accent">
+              {HERO.bonus}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2">

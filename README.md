@@ -1,4 +1,4 @@
-# Guia (PDF) — página de captura
+# Aula gratuita + e-book bônus — página de captura
 
 Página enxuta: copy + formulário de 3 campos (uma pergunta por tela: nome →
 e-mail → WhatsApp). Ao terminar, mostra **dois botões**: a **aula gratuita**

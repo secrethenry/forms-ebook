@@ -1,5 +1,5 @@
 /**
- * SEO da página de captura do Guia.
+ * SEO da página de captura da aula gratuita (+ e-book bônus).
  *
  * ⚠️ Se usar outro subdomínio, troque `SITE_URL` aqui.
  * `robots: noindex` de propósito: é página de link em bio / DM / tráfego, não
@@ -7,10 +7,10 @@
  */
 export const SITE_URL = "https://liberar-livro.jogodecorpo.com.br";
 export const SITE_CANONICAL_URL = SITE_URL;
-export const SITE_NAME = "Guia — Por Que Qualquer Mentira Funciona Com Você?";
-export const SITE_TITLE = "Por Que Qualquer Mentira Funciona Com Você? — Guia grátis";
+export const SITE_NAME = "Aula gratuita — As Três Dimensões da Mentira";
+export const SITE_TITLE = "Aula gratuita: As Três Dimensões da Mentira — Henrique Yoiti";
 export const SITE_DESCRIPTION =
-  "Baixe o guia gratuito e descubra os 3 mecanismos que deixam qualquer pessoa vulnerável à manipulação — e como desativá-los. Por Henrique Yoiti, certificado pelo Paul Ekman Group.";
+  "Assista à aula gratuita e aprenda a nunca mais ser o último a descobrir a mentira. De bônus, o e-book Por Que Qualquer Mentira Funciona Com Você? Por Henrique Yoiti, certificado pelo Paul Ekman Group.";
 
 export const jsonLdGraph = {
   "@context": "https://schema.org",

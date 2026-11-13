@@ -25,7 +25,7 @@ export const STEPS: Step[] = [
   {
     field: "nome",
     type: "text",
-    question: "Antes de liberar seu guia: como eu te chamo?",
+    question: "Antes de liberar sua aula: como eu te chamo?",
     subtitle: "Nome e sobrenome.",
     placeholder: "Seu nome completo",
   },
@@ -33,7 +33,7 @@ export const STEPS: Step[] = [
     field: "email",
     type: "email",
     question: "{nome}, qual o seu melhor e-mail?",
-    subtitle: "É onde eu registro o seu acesso ao guia.",
+    subtitle: "É onde eu registro o seu acesso à aula.",
     placeholder: "seu@email.com",
   },
   {
@@ -45,11 +45,16 @@ export const STEPS: Step[] = [
   },
 ];
 
-/** Copy do topo da página (fixa, acima do form). */
+/**
+ * Copy do topo da página (fixa, acima do form). A promessa é a aula gratuita
+ * (= LP da 3DM); o título e a frase das 3 dimensões vêm do hero da própria
+ * LP, pra a pessoa reconhecer a promessa quando chegar lá. E-book = bônus.
+ */
 export const HERO = {
-  kicker: "Guia gratuito · PDF",
-  title: "Por que qualquer mentira funciona com você?",
-  sub: "Descubra os 3 mecanismos que deixam qualquer pessoa vulnerável à manipulação — e como desativá-los.",
+  kicker: "Aula gratuita",
+  title: { lead: "Aprenda a nunca mais ser o último a descobrir", accent: "a mentira." },
+  sub: "O problema não é que você não percebe a mentira. É que você só percebe uma das três dimensões dela. Na aula gratuita eu te mostro as três.",
+  bonus: "De bônus: o e-book Por Que Qualquer Mentira Funciona Com Você?",
 } as const;
 
 /**
