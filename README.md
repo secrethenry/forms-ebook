@@ -33,7 +33,7 @@ Sem isto a página abre e libera o PDF normalmente, mas **nenhum lead é gravado
 ### 2. Subdomínio (Cloudflare Pages)
 
 Deploy automático a cada push. Build `pnpm build`, output `out`, Node 20+.
-Aponte o subdomínio (sugestão `guia.jogodecorpo.com.br`) e, se usar outro,
+Domínio no ar: `liberar-livro.jogodecorpo.com.br` (também `forms-ebook.pages.dev`). Se trocar,
 troque `SITE_URL` em `src/lib/seo.ts`.
 
 ---

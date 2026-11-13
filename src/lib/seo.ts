@@ -5,7 +5,7 @@
  * `robots: noindex` de propósito: é página de link em bio / DM / tráfego, não
  * de busca orgânica — não precisa ser indexada.
  */
-export const SITE_URL = "https://guia.jogodecorpo.com.br";
+export const SITE_URL = "https://liberar-livro.jogodecorpo.com.br";
 export const SITE_CANONICAL_URL = SITE_URL;
 export const SITE_NAME = "Guia — Por Que Qualquer Mentira Funciona Com Você?";
 export const SITE_TITLE = "Por Que Qualquer Mentira Funciona Com Você? — Guia grátis";
