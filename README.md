@@ -1,8 +1,8 @@
 # Guia (PDF) — página de captura
 
 Página enxuta: copy + formulário de 3 campos (uma pergunta por tela: nome →
-e-mail → WhatsApp). Ao terminar, **libera o PDF ali mesmo** (sem redirecionar)
-+ oferece o curso. Grava os leads numa planilha própria (Google Sheets).
+e-mail → WhatsApp). Ao terminar, mostra **dois botões**: a **aula gratuita**
+(= LP da 3DM, em destaque) e o **e-book** (PDF) como bônus. Grava os leads numa planilha própria (Google Sheets).
 
 Substitui o formulário da Brevo. **Sem Brevo, sem Pixel, sem Clarity** — captura
 simples e limpa.
@@ -43,7 +43,7 @@ troque `SITE_URL` em `src/lib/seo.ts`.
 | Constante (`src/lib/constants.ts`) | Valor |
 |---|---|
 | `PDF_URL` | link do Drive do guia (botão de download) |
-| `COURSE_URL` | `3dm.jogodecorpo.com.br` (upsell após o PDF) |
+| `AULA_URL` | `3dm.jogodecorpo.com.br` — a "aula gratuita" (botão principal após o form) |
 
 ---
 
@@ -56,7 +56,7 @@ troque `SITE_URL` em `src/lib/seo.ts`.
   salvo aqui** (parcial) — se a pessoa desistir no WhatsApp, nome + e-mail ficam.
 - WhatsApp: seletor de país (Brasil padrão). BR estrito; demais países E.164.
 - Ao terminar: grava o `completo` (mesma linha, dedup por `session_id`) e
-  **libera o PDF na tela** + upsell do curso.
+  mostra a tela de liberação: **aula gratuita** (LP da 3DM) + **e-book bônus**.
 
 Colunas na planilha: `recebido_em, nome, email, whatsapp` + atribuição
 (`utm_*`, `fbclid`, `gclid`, `referrer`, `session_id`).
@@ -75,5 +75,5 @@ Validado com `tsc`, `eslint`, `next build` limpos + teste end-to-end no browser
 - `src/content/countries.ts` — 130 países do seletor de WhatsApp.
 - `scripts/apps-script-planilha-guia.gs` — receptor no Google Sheets.
 
-> **Regra:** a promessa é o PDF na tela + o upsell. Não reintroduzir Brevo,
+> **Regra:** a promessa é a aula gratuita (LP da 3DM) + o e-book de bônus na tela. Não reintroduzir Brevo,
 > Pixel ou Clarity sem pedido explícito.

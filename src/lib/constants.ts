@@ -22,5 +22,9 @@ export const LEADS_ENDPOINT =
  */
 export const PDF_URL = "https://drive.google.com/file/d/1Czged74APqvu9M-beaWdY1U97U0lzyNv/view";
 
-/** Upsell: LP de venda do curso, oferecida logo depois do guia liberado. */
-export const COURSE_URL = "https://3dm.jogodecorpo.com.br";
+/**
+ * "Aula gratuita" = a landing page da 3DM (com a VSL). É o botão principal da
+ * tela de liberação; o e-book entra como bônus logo abaixo. Decisão do
+ * Henrique em 2026-11-12.
+ */
+export const AULA_URL = "https://3dm.jogodecorpo.com.br";

@@ -52,17 +52,20 @@ export const HERO = {
   sub: "Descubra os 3 mecanismos que deixam qualquer pessoa vulnerável à manipulação — e como desativá-los.",
 } as const;
 
-/** Copy da tela de liberação (depois de preencher). */
+/**
+ * Copy da tela de liberação (depois de preencher). Dois botões: a aula
+ * gratuita (LP da 3DM) em destaque e o e-book como bônus.
+ */
 export const REVEAL = {
   kicker: "Acesso liberado",
-  headline: "Pronto, {nome}. Seu guia está liberado.",
+  headline: "Pronto, {nome}. Seu acesso está liberado.",
+  aulaKicker: "Aula gratuita",
+  aulaTitle: "As Três Dimensões da Mentira",
+  aulaLabel: "Assistir à aula gratuita",
+  bonusKicker: "Bônus · E-book gratuito",
   pdfTitle: "Por Que Qualquer Mentira Funciona Com Você?",
   pdfDesc: "Os 3 mecanismos que te deixam vulnerável — e como desativar cada um.",
-  downloadLabel: "Baixar o guia",
-  upsellKicker: "O próximo passo",
-  upsellText:
-    "Este guia é o mapa dos 3 mecanismos. O treinamento completo — As Três Dimensões da Mentira — te dá o sistema inteiro pra ler qualquer conversa em tempo real.",
-  upsellLabel: "Conhecer o treinamento",
+  downloadLabel: "Baixar o e-book",
 } as const;
 
 /** Mensagens do micro-loader antes de liberar (rápido — não é processamento real). */

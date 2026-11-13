@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowRight, CheckCircle2, ChevronDown, Download } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, Download, Play } from "lucide-react";
 import { Kicker } from "@/components/ui/kicker";
 import { cn } from "@/lib/utils";
 import { HERO, LOADER_STEPS, REVEAL, STEPS, type Step } from "@/content/form";
@@ -20,7 +20,7 @@ import {
   type Answers,
 } from "@/lib/lead";
 import { COUNTRIES, DEFAULT_COUNTRY, dialFor } from "@/content/countries";
-import { COURSE_URL, PDF_URL } from "@/lib/constants";
+import { AULA_URL, PDF_URL } from "@/lib/constants";
 
 type Phase = "form" | "loading" | "done";
 
@@ -363,7 +363,7 @@ function PhoneField({
         className={nextButtonClass}
         style={{ backgroundImage: "var(--gradient-cta-gold)" }}
       >
-        Liberar meu guia
+        Liberar meu acesso
         <ArrowRight className="size-4 transition-transform group-hover/next:translate-x-0.5" aria-hidden />
       </button>
     </div>
@@ -421,45 +421,57 @@ function Reveal({ name }: { name: string }) {
           {REVEAL.headline.replace(/\{nome\}/g, name)}
         </h2>
 
-        <div className="mt-7 flex flex-col gap-5 rounded-[8px] border border-white/10 bg-surface-raised/62 p-5 sm:flex-row sm:items-center">
-          <div className="relative mx-auto aspect-[4/5] w-32 shrink-0 overflow-hidden rounded-[6px] border border-border-gold sm:mx-0">
+        {/* 1 — Aula gratuita (= LP da 3DM). Botão principal, em destaque.
+            Abre em nova aba pra esta tela continuar aberta com o e-book. */}
+        <div className="mt-7 rounded-[8px] border border-border-gold bg-accent/8 p-5">
+          <Kicker>
+            <Play className="size-3.5" aria-hidden />
+            {REVEAL.aulaKicker}
+          </Kicker>
+          <p className="mt-3 text-lg font-semibold leading-tight text-foreground">
+            {REVEAL.aulaTitle}
+          </p>
+          <a
+            href={AULA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(nextButtonClass, "mt-4")}
+            style={{ backgroundImage: "var(--gradient-cta-gold)" }}
+          >
+            {REVEAL.aulaLabel}
+            <ArrowRight className="size-4 transition-transform group-hover/next:translate-x-0.5" aria-hidden />
+          </a>
+        </div>
+
+        {/* 2 — Bônus: o e-book gratuito */}
+        <div className="mt-4 flex flex-col gap-5 rounded-[8px] border border-white/10 bg-surface-raised/62 p-5 sm:flex-row sm:items-center">
+          <div className="relative mx-auto aspect-[4/5] w-28 shrink-0 overflow-hidden rounded-[6px] border border-border-gold sm:mx-0">
             <Image
               src="/img/pdf-mockup.png"
-              alt="Capa do guia Por Que Qualquer Mentira Funciona Com Você?"
+              alt="Capa do e-book Por Que Qualquer Mentira Funciona Com Você?"
               fill
-              sizes="128px"
+              sizes="112px"
               className="object-cover"
             />
           </div>
           <div className="min-w-0 flex-1 text-center sm:text-left">
-            <p className="text-lg font-semibold leading-tight text-foreground">{REVEAL.pdfTitle}</p>
+            <Kicker>{REVEAL.bonusKicker}</Kicker>
+            <p className="mt-2 text-lg font-semibold leading-tight text-foreground">{REVEAL.pdfTitle}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{REVEAL.pdfDesc}</p>
             <a
               href={PDF_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(nextButtonClass, "mt-4")}
-              style={{ backgroundImage: "var(--gradient-cta-gold)" }}
+              className={cn(
+                "mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[var(--radius-md)] border border-border-gold px-6 py-3",
+                "font-semibold uppercase tracking-[var(--ls-cta)] text-accent transition-colors hover:bg-accent/10",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+              )}
             >
               <Download className="size-4" aria-hidden />
               {REVEAL.downloadLabel}
             </a>
           </div>
-        </div>
-      </div>
-
-      {/* Upsell — o momento logo após o guia é ouro pra oferecer o curso */}
-      <div className="mt-5 rounded-[8px] border border-white/10 bg-surface-raised/62 p-6 sm:p-7">
-        <Kicker>{REVEAL.upsellKicker}</Kicker>
-        <p className="mt-4 leading-[1.75] text-muted-foreground">{REVEAL.upsellText}</p>
-        <div className="mt-6">
-          <a
-            href={COURSE_URL}
-            className="group/cta inline-flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-md)] border border-border-gold px-6 py-3 font-semibold uppercase tracking-[var(--ls-cta)] text-accent transition-colors hover:bg-accent/10"
-          >
-            {REVEAL.upsellLabel}
-            <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" aria-hidden />
-          </a>
         </div>
       </div>
     </motion.div>

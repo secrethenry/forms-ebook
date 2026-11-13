@@ -10,7 +10,8 @@ import { cn } from "@/lib/utils";
  * Página de captura do Guia (PDF gratuito).
  *
  * Enxuta de propósito: copy curta + form de 3 campos (uma pergunta por tela).
- * No fim, o PDF é liberado ali mesmo (sem redirecionar) + upsell do curso.
+ * No fim, a tela de liberação mostra dois botões: a aula gratuita (LP da 3DM)
+ * em destaque e o e-book (PDF) como bônus.
  */
 
 const CREDENTIALS = [
